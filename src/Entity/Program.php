@@ -14,14 +14,18 @@ class Program
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 255)]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $synopsis = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $poster = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -57,9 +61,21 @@ class Program
         return $this->poster;
     }
 
-    public function setPoster(?string $poster): static
+    public function setPoster(string $poster): static
     {
         $this->poster = $poster;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }
