@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Film #{{movie.id}}
+{% endblock %}
+
+{% block body %}
+<main>
+	<article>
+		<img src="{{ movie.poster }}" alt="{{ movie.title }}">
+		<h1>{{ movie.title }}</h1>
+		<p>{{ movie.synopsis }}</p>
+		<p>Catégorie :
+			{{ movie.category.name }}</p>
+	</article>
+
+	<a href="{{ path('movie_index') }}" class="btn btn-light m-5">Retour à la liste des films</a>
+	</main>
+
+{% endblock %}

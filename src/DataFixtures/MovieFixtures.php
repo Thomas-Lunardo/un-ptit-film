@@ -2,12 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Program;
+use App\Entity\Movie;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class ProgramFixtures extends Fixture implements DependentFixtureInterface
+class MovieFixtures extends Fixture implements DependentFixtureInterface
 {
     public const PROGRAMS = [
         [
@@ -41,11 +41,11 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'category' => 'category_Marvel',
         ],
      ];
-    
+
     public function load(ObjectManager $manager): void
     {
         foreach (self::PROGRAMS as $key => $programName) {
-            $program = new Program();
+            $program = new Movie();
             $program->setTitle($programName['title']);
             $program->setSynopsis($programName['synopsis']);
             $program->setPoster($programName['poster']);

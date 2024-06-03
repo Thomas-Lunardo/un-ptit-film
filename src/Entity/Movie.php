@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\ProgramRepository;
+use App\Repository\MovieRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ProgramRepository::class)]
-class Program
+#[ORM\Entity(repositoryClass: MovieRepository::class)]
+class Movie
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -23,8 +23,7 @@ class Program
     #[ORM\Column(length: 255)]
     private ?string $poster = null;
 
-    #[ORM\ManyToOne(inversedBy: 'programs')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne]
     private ?Category $category = null;
 
     public function getId(): ?int

@@ -25,7 +25,7 @@ class CategoryFixtures extends Fixture
         'Horreur',
         'Marvel',
         'Samourai',
-        'Sience fiction',
+        'Sicence fiction',
         'Western',
         'X-men',
     ];
