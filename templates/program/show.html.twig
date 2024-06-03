@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Film #{{program.id}}
+{% block title %}Série #{{program.id}}
 {% endblock %}
 
 {% block body %}
-<main>
-	<article>
-		<img src="{{ program.poster }}" alt="{{ program.title }}">
-		<h1>{{ program.title }}</h1>
-		<p>{{ program.synopsis }}</p>
-		<p>Catégorie :
-			{{ program.category.name }}</p>
-	</article>
+	<main>
+		<article class="movie-card">
+			<img src="{{ program.poster }}" alt="{{ program.title }}">
+			<h1>{{ program.title }}</h1>
+			<p>{{ program.synopsis }}</p>
+			<p>Catégorie :
+				{{ program.category.name }}</p>
+		</article>
 
-	<a href="{{ path('program_index') }}" class="btn btn-light m-5">Retour à la liste des films</a>
+		<a href="{{ path('program_index') }}" class="btn btn-light m-5">Retour à la liste des séries</a>
 	</main>
 
 {% endblock %}

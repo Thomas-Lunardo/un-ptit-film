@@ -5,7 +5,7 @@
 
 {% block body %}
 	<main>
-		<h1 class="text-center m-4">Tous les films de la table program</h1>
+		<h1 class="text-center m-4">Toutes les séries disponbiles</h1>
 		{% for program in programs %}
 			<article class="movie-card">
 				<img src="{{ program.poster }}" class="card-img-top" alt="...">
@@ -14,12 +14,12 @@
 					<p class="card-text">{{ program.synopsis }}</p>
 					<p>Catégorie :
 						{{ program.category.name }}</p>
-					<a href="{{ path("program_show", {id: program.id }) }}" class="btn btn-primary">Détails du film</a>
+					<a href="{{ path("program_show", {id: program.id }) }}" class="btn btn-primary">Détails</a>
 				</div>
 			</acticle>
 
 		{% else %}
-			Aucun film trouvé en base de données
+			Aucune série trouvée
 		{% endfor %}
 
 		<a href="{{ path('app_index') }}" class="btn btn-light m-5">Retour à l'accueil</a>

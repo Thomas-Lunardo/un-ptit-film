@@ -11,34 +11,22 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
     public const PROGRAMS = [
         [
-            'title' => 'Iron Man',
-            'synopsis' => 'Tony Stark devient Iron Man.',
-            'poster' => 'https://fr.web.img3.acsta.net/medias/nmedia/18/62/89/45/18876909.jpg',
-            'category' => 'category_Marvel',
+            'title' => 'Friends',
+            'synopsis' => 'La série entre toutes les séries',
+            'poster' => 'https://fr.web.img2.acsta.net/pictures/18/11/13/14/05/2764761.jpg',
+            'category' => 'category_Comédie américaine',
         ],
         [
-            'title' => 'The Incredible Hulk',
-            'synopsis' => 'Les aventure des Bruce Banner joue par Edourd Norton.',
-            'poster' => 'https://m.media-amazon.com/images/M/MV5BMTUyNzk3MjA1OF5BMl5BanBnXkFtZTcwMTE1Njg2MQ@@._V1_.jpg',
-            'category' => 'category_Marvel',
+            'title' => 'NCIS',
+            'synopsis' => 'Gibbs et les méchants',
+            'poster' => 'https://fr.web.img3.acsta.net/pictures/19/06/18/12/13/0214170.jpg',
+            'category' => 'category_Action américaine',
         ],
         [
-            'title' => 'Iron Man 2',
-            'synopsis' => 'Tony Stark galère avec son générateur.',
-            'poster' => 'https://fr.web.img2.acsta.net/medias/nmedia/18/70/45/28/19408942.jpg',
-            'category' => 'category_Marvel',
-        ],
-        [
-            'title' => 'Thor',
-            'synopsis' => 'Thor sur Terre sans pouvoir.',
-            'poster' => 'https://fr.web.img3.acsta.net/medias/nmedia/18/77/96/35/19701393.jpg',
-            'category' => 'category_Marvel',
-        ],
-        [
-            'title' => 'Capitain America',
-            'synopsis' => 'Les aventures de Steve Rogers.',
-            'poster' => 'https://fr.web.img4.acsta.net/medias/nmedia/18/84/69/36/19774937.jpg',
-            'category' => 'category_Marvel',
+            'title' => 'Shogun',
+            'synopsis' => 'L\'histoire d\'AnjinSama au Japon',
+            'poster' => 'https://fr.web.img6.acsta.net/pictures/23/11/29/16/34/1794966.jpg',
+            'category' => 'category_Samourai',
         ],
      ];
     
