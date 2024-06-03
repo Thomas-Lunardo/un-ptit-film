@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Toutes les catégories
+{% endblock %}
+
+{% block body %}
+	<main>
+		<h1 class="text-center m-4">Toutes les catégories de la table catégory</h1>
+		{% for category in categories %}
+			<article class="movie-card">
+				<h2>{{ category.name }}</h2>
+				<a href="{{ path("category_show", { categoryName: category.name }) }}">Voir les films</a>
+			</article>
+		{% else %}
+			Aucune catégorie trouvé en base de données
+		{% endfor %}
+
+		<a href="{{ path('app_index') }}" class="btn btn-light m-5">Retour à l'accueil</a>
+	</main>
+
+{% endblock %}

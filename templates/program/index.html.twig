@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Un p'tit film{% endblock %}
+{% block title %}Tous les films
+{% endblock %}
 
 {% block body %}
-<h1>{{ website }} index</h1>
+	<main>
+		<h1 class="text-center m-4">Tous les films de la table program</h1>
+		{% for program in programs %}
+			<article class="movie-card">
+				<img src="{{ program.poster }}" class="card-img-top" alt="...">
+				<div class="movie-card-body">
+					<h5 class="card-title fs-1 mt-2">{{ program.title }}</h5>
+					<p class="card-text">{{ program.synopsis }}</p>
+					<p>Catégorie :
+						{{ program.category.name }}</p>
+					<a href="{{ path("program_show", {id: program.id }) }}" class="btn btn-primary">Détails du film</a>
+				</div>
+			</acticle>
+
+		{% else %}
+			Aucun film trouvé en base de données
+		{% endfor %}
+
+		<a href="{{ path('app_index') }}" class="btn btn-light m-5">Retour à l'accueil</a>
+	</main>
+
 {% endblock %}
