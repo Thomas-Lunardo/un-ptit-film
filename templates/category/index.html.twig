@@ -11,7 +11,7 @@
 				/
 				{{ category.name }}
 
-			{# <a href="{{ path("category_show", {id: category.id }) }}">Voir les films</a> #}
+			<a href="{{ path("category_show", { categoryName: category.name }) }}">Voir les films</a>
 		</div>
     {% else %}
         Aucune catégorie trouvé en base de données

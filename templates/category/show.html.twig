@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie #{{category.id}}
+{% endblock %}
+
+{% block body %}
+	<h1>{{ category.name }}</h1>
+
+	{% for movie in movies %}
+		<article>
+			<h2>{{ loop.index }}
+				/
+				{{ movie.title }}</h2>
+				<p>id : {{ movie.id }}</p>
+				<p>id : {{ movie.synopsis }}</p>
+				<a href="{{ path("program_show", {id: movie.id }) }}">Détails du film</a>
+		</article>
+	{% else %}
+		Aucun film trouvé dans cette catégorie
+	{% endfor %}
+
+	<a href="{{ path('app_index') }}">Retour à l'accueil</a>
+
+	<a href="{{ path('program_index') }}">Retour à la liste des films</a>
+
+{% endblock %}

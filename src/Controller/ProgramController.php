@@ -28,7 +28,7 @@ class ProgramController extends AbstractController
 
         if (!$program) {
             throw $this->createNotFoundException(
-                'Pas de film avec l\'id : '.$id.' trouvé dans la base de données.'
+                'Pas de film avec l\'id : '.$id.' en base de données.'
             );
         }
         return $this->render('program/show.html.twig', [
