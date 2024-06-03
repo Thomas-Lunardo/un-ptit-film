@@ -1,4 +1,48 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    scroll-behavior: smooth;
+    font-family: var(--main-font);
+    text-decoration: none;
+}
+
 body {
     background-color: rgba(0, 33, 35, 1);
     color: whitesmoke;
+}
+
+.navbar {
+    height: 7vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5vh auto 3vh;
+}
+
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: 4vh auto;
+    width: 50vw
+}
+
+.movie-card img {
+    width: 25vw;
+    border-radius: 10px;
+}
+
+.movie-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

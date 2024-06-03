@@ -4,23 +4,29 @@
 {% endblock %}
 
 {% block body %}
-	<h1>{{ category.name }}</h1>
 
-	{% for movie in movies %}
-		<article>
-			<h2>{{ loop.index }}
-				/
-				{{ movie.title }}</h2>
-				<p>id : {{ movie.id }}</p>
-				<p>id : {{ movie.synopsis }}</p>
-				<a href="{{ path("program_show", {id: movie.id }) }}">Détails du film</a>
-		</article>
-	{% else %}
-		Aucun film trouvé dans cette catégorie
-	{% endfor %}
+	<main>
+		<h1>{{ category.name }}</h1>
 
-	<a href="{{ path('app_index') }}">Retour à l'accueil</a>
+		{% for movie in movies %}
+			<article class="movie-card">
+				<img src="{{ movie.poster }}" class="card-img-top" alt="...">
+				<div class="movie-card-body">
+					<h5 class="card-title fs-1 mt-2">{{ movie.title }}</h5>
+					<p class="card-text">{{ movie.synopsis }}</p>
+					<p>Catégorie :
+						{{ movie.category.name }}</p>
+					<a href="{{ path("program_show", {id: movie.id }) }}" class="btn btn-primary">Détails du film</a>
+				</div>
+			</acticle>
+		{% else %}
+			Aucun film trouvé dans cette catégorie
+		{% endfor %}
 
-	<a href="{{ path('program_index') }}">Retour à la liste des films</a>
+		<a href="{{ path('app_index') }}" class="btn btn-light m-5">Retour à l'accueil</a>
+
+		<a href="{{ path('program_index') }}" class="btn btn-light m-5">Retour à la liste des films</a>
+
+	</main>
 
 {% endblock %}

@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+<main>
 	<article>
 		<img src="{{ program.poster }}" alt="{{ program.title }}">
 		<h1>{{ program.title }}</h1>
@@ -12,6 +13,7 @@
 			{{ program.category.name }}</p>
 	</article>
 
-	<a href="{{ path('program_index') }}">Retour à la liste des films</a>
+	<a href="{{ path('program_index') }}" class="btn btn-light m-5">Retour à la liste des films</a>
+	</main>
 
 {% endblock %}
