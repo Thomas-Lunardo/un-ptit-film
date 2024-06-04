@@ -1,13 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Catégorie #{{category.id}}
+{% block title %}Tous les films
 {% endblock %}
 
 {% block body %}
-
 	<main>
-		<h1>{{ category.name }}</h1>
-
+		<h1 class="text-center m-4">Tous les films disponibles</h1>
 		{% for movie in movies %}
 			<article class="movie-card">
 				<img src="{{ movie.poster }}" class="card-img-top" alt="...">
@@ -16,19 +14,15 @@
 					<p class="card-text">{{ movie.synopsis }}</p>
 					<p>Catégorie :
 						{{ movie.category.name }}</p>
-					<a href="{{ path("program_show", {id: movie.id }) }}" class="btn btn-primary">Détails du film</a>
+					<a href="{{ path("movie_show", {id: movie.id }) }}" class="btn btn-primary">Détails du film</a>
 				</div>
 			</acticle>
+
 		{% else %}
-			Aucun film trouvé dans cette catégorie
+			Aucun film trouvé en base de données
 		{% endfor %}
 
 		<a href="{{ path('app_index') }}" class="btn btn-light m-5">Retour à l'accueil</a>
-
-		<a href="{{ path('program_index') }}" class="btn btn-light m-5">Retour à la liste des séries</a>
-
-		<a href="{{ path('movie_index') }}" class="btn btn-light m-5">Retour à la liste des films</a>
-
 	</main>
 
 {% endblock %}
