@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tous les films
+{% block title %}Toutes les séries
 {% endblock %}
 
 {% block body %}
@@ -14,7 +14,7 @@
 					<p class="card-text">{{ program.synopsis }}</p>
 					<p>Catégorie :
 						{{ program.category.name }}</p>
-					<a href="{{ path("program_show", {id: program.id }) }}" class="btn btn-primary">Détails</a>
+					<a href="{{ path("program_show", {id: program.id }) }}" class="btn btn-light m-2">Détails</a>
 				</div>
 			</acticle>
 
@@ -22,7 +22,7 @@
 			Aucune série trouvée
 		{% endfor %}
 
-		<a href="{{ path('app_index') }}" class="btn btn-light m-5">Retour à l'accueil</a>
+		<a href="{{ path('app_index') }}" class="btn btn-light m-3">Retour à l'accueil</a>
 	</main>
 
 {% endblock %}
