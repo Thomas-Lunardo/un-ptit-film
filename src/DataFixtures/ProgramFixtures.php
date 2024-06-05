@@ -6,6 +6,7 @@ use App\Entity\Program;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -41,7 +42,20 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $this->addReference('program_' . $programName['title'], $program);
             $manager->persist($program);
         }
-        
+
+        $faker = Factory::create('fr_FR');
+
+        for ($i=1; $i <=10 ; $i++) { 
+            $program = new Program();
+            $program->setTitle($faker->name);
+            $program->setSynopsis($faker->paragraphs(2, true));
+            $program->setPoster($faker->imageUrl(640, 480, 'animals', true));
+            $program->setCategory($this->getReference('category_' . $faker->numberBetween(1, 5)));
+
+            $manager->persist($program);
+            $this->addReference('program_' . $i, $program);
+        }
+
         $manager->flush();
     }
 
