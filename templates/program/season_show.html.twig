@@ -21,6 +21,7 @@
 					<li class="m-2">
 						{{ episode.synopsis }}
 					</li>
+					<a href="{{ path("program_episode_show", { programId: program.id, seasonId: season.id, episodeId: episode.id }) }}" class="btn btn-light m-3">Voir l'épisode</a>
 				</div>
 
 			{% else %}
