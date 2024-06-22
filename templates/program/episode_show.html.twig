@@ -8,7 +8,7 @@
 
 {% block body %}
 	<main>
-		<article class="movie-card">
+		<article class="movie-card mt-5">
 			<img src="{{ program.poster }}" alt="{{ program.title }}">
 			<h1 class="mt-4">{{ program.title }}</h1>
 			<div class="m-3 text-center">
@@ -27,9 +27,9 @@
 			</div>
 		</article>
 
-		<a href="{{ path('program_season_show', {program: program.id, season: season.id}) }}" class="btn btn-light m-3">Retour à la saison</a>
+		<a href="{{ path('program_season_show', {program: program.id, season: season.id}) }}" class="btn btn-light m-3 px-5">Retour à la saison</a>
 
-		<a href="{{ path('program_index') }}" class="btn btn-light m-1">Retour à la liste des séries</a>
+		<a href="{{ path('program_index') }}" class="btn btn-light m-1 px-5">Retour à la liste des séries</a>
 	</main>
 
 {% endblock %}
