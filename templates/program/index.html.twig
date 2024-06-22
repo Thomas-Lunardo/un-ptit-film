@@ -5,24 +5,28 @@
 
 {% block body %}
 	<main>
-		<h1 class="text-center m-4">Toutes les séries disponbiles</h1>
-		{% for program in programs %}
-			<article class="movie-card">
-				<img src="{{ program.poster }}" class="card-img-top" alt="...">
-				<div class="movie-card-body">
-					<h5 class="card-title fs-1 mt-2">{{ program.title }}</h5>
-					<p class="card-text">{{ program.synopsis }}</p>
-					<p>Catégorie :
-						{{ program.category.name }}</p>
-					<a href="{{ path("program_show", {id: program.id }) }}" class="btn btn-light m-2">Détails</a>
-				</div>
-			</acticle>
+		<h1 class="text-center my-5">Toutes les séries disponbiles</h1>
+		<div class="container text-center">
+			<div class="row">
+				{% for program in programs %}
+					<div class="col movie-card">
+						<img src="{{ program.poster }}" class="card-img-top" alt="affiche de la série {{ program.title }}" class="poster">
+						<div class="movie-card-body">
+							<h5 class="card-title fs-1 my-3">{{ program.title }}</h5>
+							<p class="card-text">{{ program.synopsis }}</p>
+							<p>Catégorie :
+								{{ program.category.name }}</p>
+							<a href="{{ path("program_show", {id: program.id }) }}" class="btn btn-light m-2 px-5">Voir la série</a>
+						</div>
+					</div>
 
-		{% else %}
-			Aucune série trouvée
-		{% endfor %}
+				{% else %}
+					Aucune série trouvée
+				{% endfor %}
+			</div>
+		</div>
 
-		<a href="{{ path('app_index') }}" class="btn btn-light m-3">Retour à l'accueil</a>
+		<a href="{{ path('app_index') }}" class="btn btn-light m-3 px-5">Retour à l'accueil</a>
 	</main>
 
 {% endblock %}

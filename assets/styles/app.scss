@@ -16,6 +16,9 @@ body {
 .navbar {
     height: 7vh;
     width: 100vw;
+    position: fixed;
+    top: 0;
+    opacity: 98%;
 }
 
 main {
@@ -33,11 +36,12 @@ main {
     align-items: center;
     border-radius: 10px;
     margin: 4vh auto;
-    width: 50vw
+    width: 30vw
 }
 
 .movie-card img {
-    width: 25vw;
+    width: 23vw;
+    height: 55vh;
     border-radius: 10px;
 }
 
