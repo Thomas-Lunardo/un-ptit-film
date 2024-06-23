@@ -5,15 +5,19 @@
 
 {% block body %}
 	<main>
-		<h1 class="text-center m-4">Toutes les catégories de la table catégory</h1>
-		{% for category in categories %}
-			<article class="movie-card">
-				<h2>{{ category.name }}</h2>
-				<a href="{{ path("category_show", { categoryName: category.name }) }}">Voir les films</a>
-			</article>
-		{% else %}
-			Aucune catégorie trouvé en base de données
-		{% endfor %}
+		<h1 class="text-center my-5">Toutes les catégories</h1>
+		<div class="container text-center">
+			<div class="row">
+				{% for category in categories %}
+					<div class="col col-lg-2 movie-card">
+						<h2>{{ category.name }}</h2>
+						<a href="{{ path("category_show", { categoryName: category.name }) }}" class="btn btn-light my-3 px-5">Voir</a>
+					</div>
+				{% else %}
+					Aucune catégorie trouvée en base de données
+				{% endfor %}
+			</div>
+		</div>
 
 		<a href="{{ path('app_index') }}" class="btn btn-light m-5">Retour à l'accueil</a>
 	</main>

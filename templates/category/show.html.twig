@@ -6,28 +6,52 @@
 {% block body %}
 
 	<main>
-		<h1>{{ category.name }}</h1>
+		<h1 class="my-5">{{ category.name }}</h1>
+		<div class="container text-center">
+			<div class="row">
+				{% for movie in movies %}
+					<div class=" col movie-card">
+						<img src="{{ movie.poster }}" class="card-img-top" alt="...">
+						<div class="movie-card-body">
+							<h5 class="card-title fs-1 mt-2">{{ movie.title }}</h5>
+							<p class="card-text">{{ movie.synopsis }}</p>
+							<p>Catégorie :
+								{{ movie.category.name }}</p>
+							<a href="{{ path("program_show", {id: movie.id }) }}" class="btn btn-light mb-5 px-5">Voir le film</a>
+						</div>
+					</div>
 
-		{% for movie in movies %}
-			<article class="movie-card">
-				<img src="{{ movie.poster }}" class="card-img-top" alt="...">
-				<div class="movie-card-body">
-					<h5 class="card-title fs-1 mt-2">{{ movie.title }}</h5>
-					<p class="card-text">{{ movie.synopsis }}</p>
-					<p>Catégorie :
-						{{ movie.category.name }}</p>
-					<a href="{{ path("program_show", {id: movie.id }) }}" class="btn btn-primary">Détails du film</a>
-				</div>
-			</acticle>
-		{% else %}
-			Aucun film trouvé dans cette catégorie
-		{% endfor %}
+				{% else %}
+					<p class="fs-3">Aucun film trouvé dans cette catégorie</p>
+				{% endfor %}
+			</div>
+		</div>
 
-		<a href="{{ path('app_index') }}" class="btn btn-light m-5">Retour à l'accueil</a>
+		<div class="container text-center">
+			<div class="row">
+				{% for program in programs %}
+					<div class="col movie-card">
+						<img src="{{ program.poster }}" class="card-img-top" alt="...">
+						<div class="movie-card-body">
+							<h5 class="card-title fs-1 my-3">{{ program.title }}</h5>
+							<p class="card-text">{{ program.synopsis }}</p>
+							<p>Catégorie :
+								{{ program.category.name }}</p>
+							<a href="{{ path("program_show", {id: program.id }) }}" class="btn btn-light mb-5 px-5">Voir la série</a>
+						</div>
+					</div>
 
-		<a href="{{ path('program_index') }}" class="btn btn-light m-5">Retour à la liste des séries</a>
+				{% else %}
+					<p class="fs-3">Aucun série trouvée dans cette catégorie</p>
+				{% endfor %}
+			</div>
+		</div>
 
-		<a href="{{ path('movie_index') }}" class="btn btn-light m-5">Retour à la liste des films</a>
+		<a href="{{ path('category_index') }}" class="btn btn-light my-4 px-4">Retour aux catégories</a>
+
+		<a href="{{ path('program_index') }}" class="btn btn-light my-4 px-4">Retour à la liste des séries</a>
+
+		<a href="{{ path('movie_index') }}" class="btn btn-light my-4 px-4">Retour à la liste des films</a>
 
 	</main>
 

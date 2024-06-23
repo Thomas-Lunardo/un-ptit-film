@@ -2,9 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
+use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\MovieRepository;
 use App\Repository\ProgramRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -22,12 +27,37 @@ class CategoryController extends AbstractController
         ]);
     }
 
+    #[Route('/new', name: 'new')]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $category = new Category();
+
+        $form = $this->createForm(CategoryType::class, $category);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $entityManager->persist($category);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('category_index');
+        }
+
+        return $this->render('category/new.html.twig', ['form' => $form]);
+    }
+
     #[Route('/{categoryName}', methods: ['GET'], name: 'show')]
-    public function show(string $categoryName, CategoryRepository $categoryRepository, ProgramRepository $programRepository): Response
+    public function show(string $categoryName, CategoryRepository $categoryRepository, MovieRepository $movieRepository, ProgramRepository $programRepository): Response
     {
         $category = $categoryRepository->findOneBy(['name' => $categoryName]);
 
-        $movies = $programRepository->findBy(
+        $movies = $movieRepository->findBy(
+            ['category' => $category],
+            ['id' => 'DESC'],
+            limit: 3,
+        );
+
+        $programs = $programRepository->findBy(
             ['category' => $category],
             ['id' => 'DESC'],
             limit: 3,
@@ -41,6 +71,7 @@ class CategoryController extends AbstractController
         return $this->render('category/show.html.twig', [
             'category' => $category,
             'movies' => $movies,
+            'programs' => $programs,
         ]);
     }
 }
