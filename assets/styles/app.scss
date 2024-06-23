@@ -21,6 +21,18 @@ body {
     opacity: 98%;
 }
 
+.film-roll {
+    width: 2.6vw;
+    margin-right: 0.5vw;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(69,69,69,0.59);
+    transition: all 0.5s ease-in-out;
+}
+
+.film-roll:hover {
+    transform: scale(1.1);
+}
+
 main {
     display: flex;
     flex-direction: column;
