@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Repository\MovieRepository;
 use App\Repository\ProgramRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -46,11 +47,17 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{categoryName}', methods: ['GET'], name: 'show')]
-    public function show(string $categoryName, CategoryRepository $categoryRepository, ProgramRepository $programRepository): Response
+    public function show(string $categoryName, CategoryRepository $categoryRepository, MovieRepository $movieRepository, ProgramRepository $programRepository): Response
     {
         $category = $categoryRepository->findOneBy(['name' => $categoryName]);
 
-        $movies = $programRepository->findBy(
+        $movies = $movieRepository->findBy(
+            ['category' => $category],
+            ['id' => 'DESC'],
+            limit: 3,
+        );
+
+        $programs = $programRepository->findBy(
             ['category' => $category],
             ['id' => 'DESC'],
             limit: 3,
@@ -64,6 +71,7 @@ class CategoryController extends AbstractController
         return $this->render('category/show.html.twig', [
             'category' => $category,
             'movies' => $movies,
+            'programs' => $programs,
         ]);
     }
 }
